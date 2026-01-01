@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using StargateAPI.Business.Commands;
-using StargateAPI.Business.Queries;
+using StarGate.Server.Data.Queries;
 using System.Net;
 
 namespace StargateAPI.Controllers
@@ -21,7 +21,7 @@ namespace StargateAPI.Controllers
         {
             try
             {
-                var result = await _mediator.Send(new GetPersonByName()
+                var result = await _mediator.Send(new GetAstronautDutiesByName()
                 {
                     Name = name
                 });

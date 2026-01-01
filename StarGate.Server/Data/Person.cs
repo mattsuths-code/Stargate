@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace StargateAPI.Business.Data
+namespace StarGate.Server.Data
 {
     [Table("Person")]
     public class Person

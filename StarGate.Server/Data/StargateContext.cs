@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Data;
 
-namespace StargateAPI.Business.Data
+namespace StarGate.Server.Data
 {
     public class StargateContext : DbContext
     {

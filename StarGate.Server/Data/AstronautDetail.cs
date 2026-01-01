@@ -2,27 +2,27 @@
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace StargateAPI.Business.Data
+namespace StarGate.Server.Data
 {
-    [Table("AstronautDuty")]
-    public class AstronautDuty
+    [Table("AstronautDetail")]
+    public class AstronautDetail
     {
         public int Id { get; set; }
 
         public int PersonId { get; set; }
 
-        public string DutyTitle { get; set; } = string.Empty;
+        public string CurrentRank { get; set; } = string.Empty;
 
-        public DateTime DutyStartDate { get; set; }
+        public DateTime CareerStartDate { get; set; }
 
-        public DateTime? DutyEndDate { get; set; }
+        public DateTime? CareerEndDate { get; set; }
 
         public virtual Person Person { get; set; }
     }
 
-    public class AstronautDutyConfiguration : IEntityTypeConfiguration<AstronautDuty>
+    public class AstronautDetailConfiguration : IEntityTypeConfiguration<AstronautDetail>
     {
-        public void Configure(EntityTypeBuilder<AstronautDuty> builder)
+        public void Configure(EntityTypeBuilder<AstronautDetail> builder)
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).ValueGeneratedOnAdd();

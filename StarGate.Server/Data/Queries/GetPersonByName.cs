@@ -1,11 +1,11 @@
 ﻿using Dapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using StargateAPI.Business.Data;
+using StarGate.Server.Data;
 using StargateAPI.Business.Dtos;
 using StargateAPI.Controllers;
 
-namespace StargateAPI.Business.Queries
+namespace StarGate.Server.Data.Queries
 {
     public class GetPersonByName : IRequest<GetPersonByNameResult>
     {
@@ -24,18 +24,19 @@ namespace StargateAPI.Business.Queries
         {
             var result = new GetPersonByNameResult();
 
-            var person = await _context.People
-                 .Include(p => p.AstronautDetail)
-                 .Where(p => p.Name == request.Name)
-                 .Select(p => new PersonAstronaut
-                 {
-                     PersonId = p.Id,
-                     Name = p.Name,
-                     CurrentRank = p.AstronautDetail != null ? p.AstronautDetail.CurrentRank : string.Empty,
-                     CareerStartDate = p.AstronautDetail != null ? (DateTime?)p.AstronautDetail.CareerStartDate : null,
-                     CareerEndDate = p.AstronautDetail != null ? p.AstronautDetail.CareerEndDate : null
-                 })
-                 .FirstOrDefaultAsync(cancellationToken);
+            var sql = @"SELECT
+                            a.Id AS PersonId,
+                            a.Name AS Name,
+                            d.CurrentRank AS CurrentRank,
+                            ad.DutyTitle AS CurrentDuty,
+                            d.CareerStartDate AS CareerStartDate,
+                            d.CareerEndDate AS CareerEndDate
+                        FROM [Person] a
+                        INNER JOIN [AstronautDetail] d ON d.PersonId = a.Id
+                        INNER JOIN [AstronautDuty] ad ON ad.PersonId = a.Id and ad.DutyEndDate IS NULL
+                        WHERE a.Name = @Name";
+
+            var person = await _context.Connection.QueryFirstOrDefaultAsync<PersonAstronaut>(sql, new { Name = request.Name });
 
             result.Person = person;
 

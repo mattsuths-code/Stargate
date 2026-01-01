@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using StarGate.Server.Data;
 using StargateAPI.Business.Commands;
-using StargateAPI.Business.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
