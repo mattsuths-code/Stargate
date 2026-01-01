@@ -1,0 +1,22 @@
+/* styles.css or app.component.scss */
+.table-head-container {
+  display: flex; /* Enables Flexbox layout */
+  justify-content: space-between; /* Pushes items to the ends of the main axis */
+  width: 100%; /* Ensures the container spans the full width of its parent/page */
+  align-items: center; /* (Optional) Vertically centers the elements */
+}
+
+.main-toolbar{
+    background-color: #005CBB;
+    color:white;
+    margin-bottom: 5px;
+}
+
+.main-body {
+    margin: 20px;
+}
+
+.acts-button {
+  background-color: #005CBB;
+  color: white;
+}

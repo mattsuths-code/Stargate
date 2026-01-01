@@ -1,4 +1,4 @@
-﻿namespace StargateAPI.Business.Dtos
+﻿namespace StarGate.Server.Business.Dtos
 {
     public class PersonAstronaut
     {
@@ -8,7 +8,7 @@
 
         public string CurrentRank { get; set; } = string.Empty;
 
-        public string CurrentDutyTitle { get; set; } = string.Empty;
+        public string CurrentDuty { get; set; } = string.Empty;
 
         public DateTime? CareerStartDate { get; set; }
 

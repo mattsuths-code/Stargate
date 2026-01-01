@@ -1,0 +1,61 @@
+<mat-toolbar class="main-toolbar">
+  <span>Astronaut Career Tracking System (ACTS)</span>
+</mat-toolbar>
+<div class="main-body">
+  <div class="table-head-container">
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="search term" #input>
+    </mat-form-field>
+  </div>
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="CurrentRank">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Rank </th>
+        <td mat-cell *matCellDef="let row"> {{row.currentRank}} </td>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="CurrentDuty">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Current Duty </th>
+        <td mat-cell *matCellDef="let row"> {{row.currentDuty}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="CareerStartDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Career Start Date </th>
+        <td mat-cell *matCellDef="let row"> {{row.careerStartDate | date:'shortDate'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="CareerEndDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Career End Date </th>
+        <td mat-cell *matCellDef="let row"> {{row.careerEndDate | date:'shortDate'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="ViewDuties">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-button color="primary" (click)="showDuties(row.name)">
+            Show Duties
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </div>
+</div>
