@@ -1,20 +1,13 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="main-toolbar">
   <span>Astronaut Career Tracking System (ACTS)</span>
-  <hr />
-  
 </mat-toolbar>
-
 <div class="main-body">
-
-  <mat-form-field>
-    <mat-label>Filter</mat-label>
-    <input matInput placeholder="Ex. Mia" #input>
-    <span class="example-spacer"></span>
-    <button mat-raised-button>
-      ADD EMPLOYEE
-    </button>
-  </mat-form-field>
-
+  <div class="table-head-container">
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="search term" #input>
+    </mat-form-field>
+  </div>
   <div class="table-container">
     <table mat-table [dataSource]="dataSource" matSort>
 
@@ -31,7 +24,7 @@
       </ng-container>
 
       <ng-container matColumnDef="CurrentDuty">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Duty </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Current Duty </th>
         <td mat-cell *matCellDef="let row"> {{row.currentDuty}}</td>
       </ng-container>
 
@@ -42,17 +35,14 @@
 
       <ng-container matColumnDef="CareerEndDate">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Career End Date </th>
-        <td mat-cell *matCellDef="let row"> {{row.careerEndDate | date:'shortDate' || 'Active'}}</td>
+        <td mat-cell *matCellDef="let row"> {{row.careerEndDate | date:'shortDate'}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+      <ng-container matColumnDef="ViewDuties">
+        <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let row">
-          <button mat-icon-button color="primary">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button color="warn">
-            <mat-icon>delete</mat-icon>
+          <button mat-button color="primary" (click)="showDuties(row.name)">
+            Show Duties
           </button>
         </td>
       </ng-container>

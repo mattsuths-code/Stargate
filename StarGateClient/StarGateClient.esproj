@@ -7,4 +7,8 @@
     <!-- Folder where production build objects will be placed -->
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\StarGateClient\browser\</BuildOutputFolder>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="src\app\add-person\" />
+    <Folder Include="src\app\add-duty\" />
+  </ItemGroup>
 </Project>
