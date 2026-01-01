@@ -13,8 +13,6 @@ namespace StargateAPI.Business.Data
 
         public string CurrentRank { get; set; } = string.Empty;
 
-        public string CurrentDutyTitle { get; set; } = string.Empty;
-
         public DateTime CareerStartDate { get; set; }
 
         public DateTime? CareerEndDate { get; set; }

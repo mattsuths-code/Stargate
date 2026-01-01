@@ -11,8 +11,6 @@ namespace StargateAPI.Business.Data
 
         public int PersonId { get; set; }
 
-        public string Rank { get; set; } = string.Empty;
-
         public string DutyTitle { get; set; } = string.Empty;
 
         public DateTime DutyStartDate { get; set; }

@@ -32,7 +32,6 @@ namespace StargateAPI.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     PersonId = table.Column<int>(type: "INTEGER", nullable: false),
                     CurrentRank = table.Column<string>(type: "TEXT", nullable: false),
-                    CurrentDutyTitle = table.Column<string>(type: "TEXT", nullable: false),
                     CareerStartDate = table.Column<DateTime>(type: "TEXT", nullable: true),
                     CareerEndDate = table.Column<DateTime>(type: "TEXT", nullable: true)
                 },
@@ -54,7 +53,6 @@ namespace StargateAPI.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     PersonId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Rank = table.Column<string>(type: "TEXT", nullable: false),
                     DutyTitle = table.Column<string>(type: "TEXT", nullable: false),
                     DutyStartDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     DutyEndDate = table.Column<DateTime>(type: "TEXT", nullable: true)
@@ -83,11 +81,27 @@ namespace StargateAPI.Migrations
 
             migrationBuilder.InsertData(
                 table: "Person",
-                columns: new[] { "Id", "Name"}, 
+                columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
                     {1, "John Doe" },
                     {2, "Jane Doe" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AstronautDetail",
+                columns: new[] { "Id", "PersonId", "CurrentRank", "CareerStartDate" },
+                values: new object[,]
+                {
+                    {1, 1, "1LT", DateTime.Now }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AstronautDuty",
+                columns: new[] { "Id", "PersonId", "DutyTitle", "DutyStartDate" },
+                values: new object[,]
+                {
+                    {1, 1, "Commander", DateTime.Now }
                 });
         }
 
