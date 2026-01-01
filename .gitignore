@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /StarGate.Server/starbase.db-shm
 /StarGate.Server/starbase.db-wal
+/StarGateClient

@@ -1,7 +1,7 @@
 <Solution>
-  <Project Path="stargate.client/stargate.client.esproj">
+  <Project Path="StarGate.Server/StarGate.Server.csproj" />
+  <Project Path="StarGateClient/StarGateClient.esproj">
     <Build />
     <Deploy />
   </Project>
-  <Project Path="StarGate.Server/StarGate.Server.csproj" />
 </Solution>

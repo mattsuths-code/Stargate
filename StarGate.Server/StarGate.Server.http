@@ -1,6 +1,6 @@
 @StarGate.Server_HostAddress = http://localhost:5051
 
-GET {{StarGate.Server_HostAddress}}/weatherforecast/
+GET {{StarGate.Server_HostAddress}}/person/
 Accept: application/json
 
 ###
