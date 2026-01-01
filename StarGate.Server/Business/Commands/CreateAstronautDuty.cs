@@ -64,7 +64,7 @@ namespace StarGate.Server.Business.Commands
                 astronautDetail = new AstronautDetail();
                 astronautDetail.PersonId = person.Id;
                 astronautDetail.CareerStartDate = request.DutyStartDate.Date;
-                if (request.DutyTitle == "RETIRED")
+                if (request.DutyTitle.ToUpper() == "RETIRED")
                 {
                     astronautDetail.CareerEndDate = request.DutyStartDate.Date;
                 }
@@ -74,7 +74,7 @@ namespace StarGate.Server.Business.Commands
             }
             else
             {
-                if (request.DutyTitle == "RETIRED")
+                if (request.DutyTitle.ToUpper() == "RETIRED")
                 {
                     astronautDetail.CareerEndDate = request.DutyStartDate.AddDays(-1).Date;
                 }
