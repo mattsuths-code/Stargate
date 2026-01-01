@@ -1,11 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using StargateAPI.Business.Commands;
+using StarGate.Server.Business.Commands;
 using StarGate.Server.Business.Queries;
 using System.Net;
 using StarGate.Server.Infrastructure.Logging.Interface;
 
-namespace StargateAPI.Controllers
+namespace StarGate.Server.Controllers
 {
     /// <summary>
     /// API controller that exposes endpoints for managing Person resources and related astronaut operations.

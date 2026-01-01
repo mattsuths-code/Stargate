@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using StarGate.Server.Business.Queries;
 using StarGate.Server.Infrastructure.Logging.Interface;
-using StargateAPI.Business.Commands;
+using StarGate.Server.Business.Commands;
 using System.Net;
 
-namespace StargateAPI.Controllers
+namespace StarGate.Server.Controllers
 {
     /// <summary>
     /// API controller exposing endpoints to manage astronaut duties.

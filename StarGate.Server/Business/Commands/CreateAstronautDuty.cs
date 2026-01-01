@@ -3,10 +3,10 @@ using MediatR;
 using MediatR.Pipeline;
 using Microsoft.EntityFrameworkCore;
 using StarGate.Server.Data;
-using StargateAPI.Controllers;
+using StarGate.Server.Controllers;
 using System.Net;
 
-namespace StargateAPI.Business.Commands
+namespace StarGate.Server.Business.Commands
 {
     public class CreateAstronautDuty : IRequest<CreateAstronautDutyResult>
     {

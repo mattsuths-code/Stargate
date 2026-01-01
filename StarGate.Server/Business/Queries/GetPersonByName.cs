@@ -2,8 +2,8 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using StarGate.Server.Data;
-using StargateAPI.Business.Dtos;
-using StargateAPI.Controllers;
+using StarGate.Server.Business.Dtos;
+using StarGate.Server.Controllers;
 
 namespace StarGate.Server.Business.Queries
 {

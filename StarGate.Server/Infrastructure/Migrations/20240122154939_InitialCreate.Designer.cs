@@ -9,7 +9,7 @@ using StarGate.Server.Data;
 
 #nullable disable
 
-namespace StargateAPI.Migrations
+namespace StarGate.Server.Migrations
 {
     [DbContext(typeof(StargateContext))]
     [Migration("20240122154939_InitialCreate")]
@@ -21,7 +21,7 @@ namespace StargateAPI.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.15");
 
-            modelBuilder.Entity("StargateAPI.Business.Data.AstronautDetail", b =>
+            modelBuilder.Entity("StarGate.Server.Business.Data.AstronautDetail", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -52,7 +52,7 @@ namespace StargateAPI.Migrations
                     b.ToTable("AstronautDetail");
                 });
 
-            modelBuilder.Entity("StargateAPI.Business.Data.AstronautDuty", b =>
+            modelBuilder.Entity("StarGate.Server.Business.Data.AstronautDuty", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -82,7 +82,7 @@ namespace StargateAPI.Migrations
                     b.ToTable("AstronautDuty");
                 });
 
-            modelBuilder.Entity("StargateAPI.Business.Data.Person", b =>
+            modelBuilder.Entity("StarGate.Server.Business.Data.Person", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -97,20 +97,20 @@ namespace StargateAPI.Migrations
                     b.ToTable("Person");
                 });
 
-            modelBuilder.Entity("StargateAPI.Business.Data.AstronautDetail", b =>
+            modelBuilder.Entity("StarGate.Server.Business.Data.AstronautDetail", b =>
                 {
-                    b.HasOne("StargateAPI.Business.Data.Person", "Person")
+                    b.HasOne("StarGate.Server.Business.Data.Person", "Person")
                         .WithOne("AstronautDetail")
-                        .HasForeignKey("StargateAPI.Business.Data.AstronautDetail", "PersonId")
+                        .HasForeignKey("StarGate.Server.Business.Data.AstronautDetail", "PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Person");
                 });
 
-            modelBuilder.Entity("StargateAPI.Business.Data.AstronautDuty", b =>
+            modelBuilder.Entity("StarGate.Server.Business.Data.AstronautDuty", b =>
                 {
-                    b.HasOne("StargateAPI.Business.Data.Person", "Person")
+                    b.HasOne("StarGate.Server.Business.Data.Person", "Person")
                         .WithMany("AstronautDuties")
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -119,7 +119,7 @@ namespace StargateAPI.Migrations
                     b.Navigation("Person");
                 });
 
-            modelBuilder.Entity("StargateAPI.Business.Data.Person", b =>
+            modelBuilder.Entity("StarGate.Server.Business.Data.Person", b =>
                 {
                     b.Navigation("AstronautDetail");
 

@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="Stargate.Server.Tests/Stargate.Server.Tests.csproj" Id="4a0f39a7-6699-4407-a427-8542bd9694b0" />
   <Project Path="StarGate.Server/StarGate.Server.csproj" />
   <Project Path="StarGateClient/StarGateClient.esproj">
     <Build />

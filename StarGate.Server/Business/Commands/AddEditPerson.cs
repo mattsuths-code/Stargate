@@ -2,9 +2,9 @@
 using MediatR.Pipeline;
 using Microsoft.EntityFrameworkCore;
 using StarGate.Server.Data;
-using StargateAPI.Controllers;
+using StarGate.Server.Controllers;
 
-namespace StargateAPI.Business.Commands
+namespace StarGate.Server.Business.Commands
 {
     /// <summary>
     /// Request to create a new person with initial astronaut detail and duty.

@@ -5,7 +5,7 @@ using Microsoft.Extensions.Hosting;
 using StarGate.Server.Data;
 using StarGate.Server.Infrastructure.Logging.Implementation;
 using StarGate.Server.Infrastructure.Logging.Interface;
-using StargateAPI.Business.Commands;
+using StarGate.Server.Business.Commands;
 
 var builder = WebApplication.CreateBuilder(args);
 
