@@ -96,11 +96,11 @@ namespace StargateAPI.Controllers
         /// </summary>
         /// <param name="person">The <see cref="CreatePerson"/> command containing the new person's data.</param>
         /// <returns>
-        /// An <see cref="IActionResult"/> that contains a <see cref="BaseResponse"/> wrapping a <see cref="CreatePersonResult"/>.
+        /// An <see cref="IActionResult"/> that contains a <see cref="BaseResponse"/> wrapping a <see cref="AddEditPersonResult"/>.
         /// On failure returns a <see cref="BaseResponse"/> with an error message and HTTP 500 status code.
         /// </returns>
         [HttpPost("")]
-        public async Task<IActionResult> CreatePerson([FromBody] CreatePerson person)
+        public async Task<IActionResult> CreatePerson([FromBody] AddEditPerson person)
         {
             try
             {
