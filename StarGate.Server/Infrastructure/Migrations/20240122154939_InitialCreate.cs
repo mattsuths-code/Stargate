@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -70,18 +71,19 @@ namespace StargateAPI.Migrations
 
 
             migrationBuilder.CreateTable(
-                name: "StarGateLogs",
+                name: "StarGateLog",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     LogLevel = table.Column<string>(type: "TEXT", nullable: false),
                     Message = table.Column<string>(type: "TEXT", nullable: false),
-                    LogDate = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    StackTrace = table.Column<string>(type: "TEXT", nullable: true),
+                    TimeStamp = table.Column<DateTime>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StarGateLogs", x => x.Id);
+                    table.PrimaryKey("PK_StarGateLog", x => x.Id);
                 });
 
             migrationBuilder.CreateIndex(

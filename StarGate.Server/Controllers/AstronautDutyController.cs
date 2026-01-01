@@ -1,7 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using StarGate.Server.Business.Queries;
+using StarGate.Server.Infrastructure.Logging.Interface;
 using StargateAPI.Business.Commands;
-using StarGate.Server.Data.Queries;
 using System.Net;
 
 namespace StargateAPI.Controllers
@@ -11,9 +12,11 @@ namespace StargateAPI.Controllers
     public class AstronautDutyController : ControllerBase
     {
         private readonly IMediator _mediator;
-        public AstronautDutyController(IMediator mediator)
+        private readonly IStarGateLogger _logger;
+        public AstronautDutyController(IMediator mediator, IStarGateLogger logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
         [HttpGet("{name}")]
@@ -30,6 +33,7 @@ namespace StargateAPI.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex);
                 return this.GetResponse(new BaseResponse()
                 {
                     Message = ex.Message,
@@ -42,8 +46,24 @@ namespace StargateAPI.Controllers
         [HttpPost("")]
         public async Task<IActionResult> CreateAstronautDuty([FromBody] CreateAstronautDuty request)
         {
+            try
+            {
                 var result = await _mediator.Send(request);
-                return this.GetResponse(result);           
+
+                return this.GetResponse(result);
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex);
+                return this.GetResponse(new BaseResponse()
+                {
+                    Message = ex.Message,
+                    Success = false,
+                    ResponseCode = (int)HttpStatusCode.InternalServerError
+                });
+
+            }
         }
     }
 }

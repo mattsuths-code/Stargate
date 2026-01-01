@@ -5,7 +5,7 @@ using StarGate.Server.Data;
 using StargateAPI.Business.Dtos;
 using StargateAPI.Controllers;
 
-namespace StarGate.Server.Data.Queries
+namespace StarGate.Server.Business.Queries
 {
     public class GetPersonByName : IRequest<GetPersonByNameResult>
     {

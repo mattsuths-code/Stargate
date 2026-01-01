@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using StarGate.Server.Infrastructure.Logging.Implementation;
 using System.Data;
 
 namespace StarGate.Server.Data
@@ -9,6 +10,7 @@ namespace StarGate.Server.Data
         public DbSet<Person> People { get; set; }
         public DbSet<AstronautDetail> AstronautDetails { get; set; }
         public DbSet<AstronautDuty> AstronautDuties { get; set; }
+        public DbSet<StargateLog> StarGateLogs { get; set; }
 
         public StargateContext(DbContextOptions<StargateContext> options)
         : base(options)

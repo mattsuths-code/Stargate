@@ -1,8 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using StargateAPI.Business.Commands;
-using StarGate.Server.Data.Queries;
+using StarGate.Server.Business.Queries;
 using System.Net;
+using StarGate.Server.Infrastructure.Logging.Interface;
 
 namespace StargateAPI.Controllers
 {
@@ -12,9 +13,11 @@ namespace StargateAPI.Controllers
     public class PersonController : ControllerBase
     {
         private readonly IMediator _mediator;
-        public PersonController(IMediator mediator)
+        private readonly IStarGateLogger _logger;
+        public PersonController(IMediator mediator, IStarGateLogger logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
         [HttpGet("")]
@@ -31,6 +34,7 @@ namespace StargateAPI.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex);
                 return this.GetResponse(new BaseResponse()
                 {
                     Message = ex.Message,
@@ -54,6 +58,7 @@ namespace StargateAPI.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex);
                 return this.GetResponse(new BaseResponse()
                 {
                     Message = ex.Message,
@@ -77,6 +82,7 @@ namespace StargateAPI.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex);
                 return this.GetResponse(new BaseResponse()
                 {
                     Message = ex.Message,

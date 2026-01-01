@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using StarGate.Server.Data;
+using StarGate.Server.Infrastructure.Logging.Implementation;
+using StarGate.Server.Infrastructure.Logging.Interface;
 using StargateAPI.Business.Commands;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,10 +14,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<StargateContext>(options => 
     options.UseSqlite(builder.Configuration.GetConnectionString("StarbaseApiDatabase")));
+builder.Services.AddTransient<IStarGateLogger, StarGateLogger>();
 
 builder.Services.AddMediatR(cfg =>
 {
     cfg.AddRequestPreProcessor<CreateAstronautDutyPreProcessor>();
+    cfg.AddRequestPreProcessor<CreatePersonPreProcessor>();
     cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly);
 });
 

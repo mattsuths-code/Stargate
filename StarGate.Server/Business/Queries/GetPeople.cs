@@ -4,7 +4,7 @@ using StarGate.Server.Data;
 using StargateAPI.Business.Dtos;
 using StargateAPI.Controllers;
 
-namespace StarGate.Server.Data.Queries
+namespace StarGate.Server.Business.Queries
 {
     /// <summary>
     /// Represents a request to retrieve all people along with their astronaut details.
@@ -46,7 +46,7 @@ namespace StarGate.Server.Data.Queries
         {
             var result = new GetPeopleResult();
 
-            var query = $"SELECT a.Id as PersonId, a.Name, b.CurrentRank, c.DutyTitle AS CurrentDuty, b.CareerStartDate, b.CareerEndDate " +
+            var query = $"SELECT a.Id as PersonId, a.Name, b.CurrentRank, c.DutyTtitle AS CurrentDuty, b.CareerStartDate, b.CareerEndDate " +
                         "FROM [Person] a INNER JOIN [AstronautDetail] b on b.PersonId = a.Id INNER JOIN [AstronautDuty] c on a.id = c.PersonId and c.DutyEndDate is null";
 
             var people = await _context.Connection.QueryAsync<PersonAstronaut>(query);
