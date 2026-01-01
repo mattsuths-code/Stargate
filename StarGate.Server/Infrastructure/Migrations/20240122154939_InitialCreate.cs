@@ -68,6 +68,22 @@ namespace StargateAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+
+            migrationBuilder.CreateTable(
+                name: "StarGateLogs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    LogLevel = table.Column<string>(type: "TEXT", nullable: false),
+                    Message = table.Column<string>(type: "TEXT", nullable: false),
+                    LogDate = table.Column<DateTime>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StarGateLogs", x => x.Id);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AstronautDetail_PersonId",
                 table: "AstronautDetail",
@@ -93,7 +109,8 @@ namespace StargateAPI.Migrations
                 columns: new[] { "Id", "PersonId", "CurrentRank", "CareerStartDate" },
                 values: new object[,]
                 {
-                    {1, 1, "1LT", DateTime.Now }
+                    {1, 1, "CPT", DateTime.Now },
+                    {2, 2, "1LT", DateTime.Now }
                 });
 
             migrationBuilder.InsertData(
@@ -101,7 +118,8 @@ namespace StargateAPI.Migrations
                 columns: new[] { "Id", "PersonId", "DutyTitle", "DutyStartDate" },
                 values: new object[,]
                 {
-                    {1, 1, "Commander", DateTime.Now }
+                    {1, 1, "Commander", DateTime.Now },
+                    {2, 2, "Executive Officer", DateTime.Now }
                 });
         }
 

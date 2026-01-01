@@ -12,8 +12,6 @@ namespace StargateAPI.Business.Commands
     {
         public required string Name { get; set; }
 
-        public required string Rank { get; set; }
-
         public required string DutyTitle { get; set; }
 
         public DateTime DutyStartDate { get; set; }
@@ -65,8 +63,6 @@ namespace StargateAPI.Business.Commands
             {
                 astronautDetail = new AstronautDetail();
                 astronautDetail.PersonId = person.Id;
-                astronautDetail.CurrentDutyTitle = request.DutyTitle;
-                astronautDetail.CurrentRank = request.Rank;
                 astronautDetail.CareerStartDate = request.DutyStartDate.Date;
                 if (request.DutyTitle == "RETIRED")
                 {
@@ -78,8 +74,6 @@ namespace StargateAPI.Business.Commands
             }
             else
             {
-                astronautDetail.CurrentDutyTitle = request.DutyTitle;
-                astronautDetail.CurrentRank = request.Rank;
                 if (request.DutyTitle == "RETIRED")
                 {
                     astronautDetail.CareerEndDate = request.DutyStartDate.AddDays(-1).Date;
@@ -100,7 +94,6 @@ namespace StargateAPI.Business.Commands
             var newAstronautDuty = new AstronautDuty()
             {
                 PersonId = person.Id,
-                Rank = request.Rank,
                 DutyTitle = request.DutyTitle,
                 DutyStartDate = request.DutyStartDate.Date,
                 DutyEndDate = null

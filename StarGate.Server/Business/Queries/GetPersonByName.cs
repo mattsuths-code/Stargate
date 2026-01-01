@@ -32,7 +32,6 @@ namespace StargateAPI.Business.Queries
                      PersonId = p.Id,
                      Name = p.Name,
                      CurrentRank = p.AstronautDetail != null ? p.AstronautDetail.CurrentRank : string.Empty,
-                     CurrentDutyTitle = p.AstronautDetail != null ? p.AstronautDetail.CurrentDutyTitle : string.Empty,
                      CareerStartDate = p.AstronautDetail != null ? (DateTime?)p.AstronautDetail.CareerStartDate : null,
                      CareerEndDate = p.AstronautDetail != null ? p.AstronautDetail.CareerEndDate : null
                  })
