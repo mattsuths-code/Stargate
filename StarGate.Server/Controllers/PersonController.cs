@@ -69,14 +69,11 @@ namespace StargateAPI.Controllers
         }
 
         [HttpPost("")]
-        public async Task<IActionResult> CreatePerson([FromBody] string name)
+        public async Task<IActionResult> CreatePerson([FromBody] CreatePerson person)
         {
             try
             {
-                var result = await _mediator.Send(new CreatePerson()
-                {
-                    Name = name
-                });
+                var result = await _mediator.Send(person);
 
                 return this.GetResponse(result);
             }
