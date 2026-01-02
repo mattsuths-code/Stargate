@@ -1,0 +1,29 @@
+.content {
+  padding-top: 10px;
+}
+
+.mat-mdc-raised-button {
+  background-color: #005CBB;
+  color: white;
+}
+
+
+.row {
+  display: flex;
+  gap: 10px;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.dialog-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dialog-head {
+    text-align: center;
+}
+
