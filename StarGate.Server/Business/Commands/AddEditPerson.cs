@@ -148,6 +148,8 @@ namespace StarGate.Server.Business.Commands
                     
                 _context.AstronautDetails.Update(personDetail);
 
+                await _context.SaveChangesAsync(cancellationToken);
+
                 returnId = person.Id;
 
             }
